@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+    <div class="container">
+        <div class="row row-padded">
+            <div class="col-md-12 text-center">
+                <div id="custom-search-input" style="padding-left: 50px;padding-right: 50px;margin: auto">
+                    <div class="input-group col-md-12">
+                        <input id="search_txt" type="text" class="form-control input-lg" placeholder="" value="{{ results.title }}"/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button" onclick="search_by_google()">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#    <div class="container">#}
+{#        <div class="row row-padded">#}
+{#            {% for title in results.titles %}#}
+{#                <div class="item">{{ title }}</div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+
+    <div id="fh5co-board" data-columns>
+
+        {% for img_link in results.similar_images %}
+            <div class="item">
+                <div class="animate-box">
+                    <a href="{% url 'search_by_clarifai' %}?link={{ img_link }}" class="fh5co-board-img" title=""><img
+                            src="{{ img_link }}" alt=""></a>
+                </div>
+                {#                <div class="fh5co-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?</div>#}
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function search_by_google() {
+            var search_title = $("#search_txt").val();
+            location.href = '{% url "search" %}' + "?q=" + search_title;
+        }
+    </script>
+
+{% endblock %}
+
