@@ -9,7 +9,9 @@ urlpatterns = [
     url(r'^contact/$', 'risapp.views.contact', name='contact'),
 
     url(r'^search/$', 'risapp.views.search', name='search'),
-    url(r'^search-clarifai/$', 'risapp.views.search_by_clarifai', name='search_by_clarifai'),
+    url(r'^clarifai/search/$', 'risapp.views.search_by_clarifai', name='search_by_clarifai'),
+    url(r'^clarifai/concepts/$', 'risapp.views.search_by_predicted_concepts', name='search_by_concepts'),
+    url(r'^clarifai/predict/$', 'risapp.views.predict_by_clarifai', name='predict_by_clarifai'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

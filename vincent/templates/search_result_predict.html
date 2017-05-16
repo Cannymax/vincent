@@ -1,14 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %} - Search Result{% endblock %}
+{% block title %} - Search Result(Related){% endblock %}
 
 {% block contents %}
-
-    <div class="col-md-12 text-center" style="margin-bottom: 20px">
-        <div id="custom-search-input" style="padding-left: 30px;padding-right: 30px;margin: auto">
-            <h3><span class="label label-default">{{ results.title }}</span></h3>
-        </div>
-    </div>
 
     <div class="container">
         <div class="row row-padded">
@@ -27,17 +21,24 @@
         </div>
     </div>
 
-    <div id="fh5co-board" data-columns>
-
-        {% for img_link in results.similar_images %}
+    <div id="fh5co-board">
+        <div style="width: 310px;margin: auto">
             <div class="item">
                 <div class="animate-box">
-                    <a href="{% url 'search' %}?q={{ img_link }}" class="fh5co-board-img" title=""><img
-                            src="{{ img_link }}" alt=""></a>
+                    <img src="{{ results.imgurl }}" alt="">
                 </div>
-                {#                <div class="fh5co-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos?</div>#}
             </div>
-        {% endfor %}
+        </div>
+        <div class="fh5co-desc" style="padding: 10px 10px 20px 10px">
+            <ul class="list-group" style="margin-bottom: 0px">
+                {% for concept in results.concepts %}
+                    <li class="list-group-item">
+                        <span class="badge">{{ concept.value }}</span>
+                        <a href="{% url 'search_by_concepts' %}?q={{ concept.name }}">{{ concept.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
     <script>

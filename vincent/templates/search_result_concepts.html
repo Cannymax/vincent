@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %} - Search Result(Concept){% endblock %}
+
+{% block contents %}
+
+    <div class="container">
+        <div class="row row-padded">
+            <div class="col-md-12 text-center">
+                <div id="custom-search-input" style="padding-left: 30px;padding-right: 30px;margin: auto">
+                    <div class="input-group col-md-12">
+                        <input id="search_txt" type="text" class="form-control input-lg" placeholder="Concept" value="{{ results.title }}"/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button" onclick="search_by_concepts()">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row row-padded">
+            {% for concept in results.concepts %}
+                <span class="label label-primary">{{ concept.name }} ({{ concept.value }})</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="fh5co-board" data-columns>
+
+        {% for a_item in results.similar_images %}
+            <div class="item">
+                <div class="animate-box">
+                    <a href="{% url 'search_by_clarifai' %}?q={{ a_item.url }}" class="fh5co-board-img" title=""><img
+                            src="{{ a_item.url }}" alt=""></a>
+                </div>
+                <div class="fh5co-desc">
+                    <ul class="list-group" style="margin-bottom: 0px">
+                        <li class="list-group-item">
+                            <span class="badge">{{ a_item.score }}</span>
+                            Score
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function search_by_concepts() {
+            var search_title = $("#search_txt").val();
+            location.href = '{% url "search_by_concepts" %}' + "?q=" + search_title;
+        }
+    </script>
+
+{% endblock %}
+
