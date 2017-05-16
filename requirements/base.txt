@@ -1,0 +1,7 @@
+# django
+django==1.8
+
+# Your custom requirements go here
+MySQL-python==1.2.5
+beautifulsoup4==4.5.1
+clarifai==2.0.21
