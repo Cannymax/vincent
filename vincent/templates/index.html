@@ -40,7 +40,7 @@
                 location.href = '{% url "search_by_clarifai" %}' + "?q=" + $(this).data('link');
             });
 
-            $(".glyphicon glyphicon-info-sign").bind('click', function () {
+            $(".glyphicon-info-sign").bind('click', function () {
                 location.href = '{% url "predict_by_clarifai" %}' + "?q=" + $(this).data('link');
             });
         });
