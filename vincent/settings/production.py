@@ -18,6 +18,10 @@ DB_NAME = get_env_variable("DB_NAME")
 DB_USER = get_env_variable("DB_USER")
 DB_PASSWD = get_env_variable("DB_PASSWD")
 
+# CLARIFAI
+CLARIFAI_KEY = get_env_variable("CLARIFAI_KEY")
+CLARIFAI_SECRET = get_env_variable("CLARIFAI_SECRET")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 

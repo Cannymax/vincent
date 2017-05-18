@@ -13,16 +13,16 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from .base import *
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'SECRET_DEBUG_!@!$!BH^%$&SS'
+
+# CLARIFAI
+CLARIFAI_KEY = get_env_variable("CLARIFAI_KEY")
+CLARIFAI_SECRET = get_env_variable("CLARIFAI_SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
